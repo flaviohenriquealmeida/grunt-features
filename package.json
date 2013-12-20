@@ -1,0 +1,37 @@
+{
+  "name": "grunt-workflow",
+  "version": "1.0.0",
+  "description": "Conjunto de boas práticas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Flávio Almeida",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "0.4.2",
+    "grunt-cli": "0.1.11",
+    "grunt-contrib-clean": "0.5.0",
+    "grunt-contrib-coffee": "0.7.0",
+    "grunt-contrib-concat": "0.3.0",
+    "grunt-contrib-copy": "0.4.1",
+    "grunt-contrib-csslint": "0.1.2",
+    "grunt-contrib-cssmin": "0.6.2",
+    "grunt-contrib-imagemin": "0.3.0",
+    "grunt-contrib-jasmine": "0.5.2",
+    "grunt-contrib-jshint": "0.7.2",
+    "grunt-contrib-less": "0.7.0",
+    "grunt-contrib-sass": "0.5.0",
+    "grunt-contrib-stylus": "0.10.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-uglify": "0.2.7",
+    "grunt-express": "1.2.1",
+    "grunt-htmlcompressor": "0.1.8",
+    "grunt-notify": "0.2.13",
+    "grunt-open": "0.2.2",
+    "grunt-template-jasmine-istanbul": "0.2.5",
+    "grunt-rev": "0.1.0",
+    "grunt-usemin": "2.0.0",
+    "load-grunt-tasks": "0.2.0"
+  }
+}
