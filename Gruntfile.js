@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
-	
+	var SERVER_PORT = 9000;
+
 	var helper = require('./helper/helper.js');
 
 	// não deve carregar templates, por isso o ignore no grunt-template-jasmine-istanbul
@@ -89,12 +90,11 @@ module.exports = function(grunt) {
 		    }
 		},
 
-		express: {
-			all: {
+		connect: {
+			server: {
 				options: {
-					port: 9000,
-					hostname: "0.0.0.0",
-					bases: 'public',
+					port: SERVER_PORT,
+					base: 'public',
 					livereload: true
 				}
 			}
@@ -103,22 +103,20 @@ module.exports = function(grunt) {
 		// grunt-open will open your browser at the project's URL
 	    open: {
 	    	padrao: {
-	    		path: 'http://localhost:<%= express.all.options.port %>',
+	    		path: 'http://localhost:' + SERVER_PORT
 	    	}, 
 
 	    	firefox: {
-	    		// Gets the port from the connect configuration
-	    		path: 'http://localhost:<%= express.all.options.port %>',
+	    		path: 'http://localhost:' + SERVER_PORT,
 	    		app: 'Firefox'
 	    	}, 
 	    	chrome: {
-	    		// Gets the port from the connect configuration
-	    		path: 'http://localhost:<%= express.all.options.port %>',
+	    		path: 'http://localhost:' + SERVER_PORT,
 	    		app: 'Google Chrome'
 	    	}, 
 	    	safari: {
-	    		// Gets the port from the connect configuration
-	    		path: 'http://localhost:<%= express.all.options.port %>',
+	    		// <%= express.all.options.port %>
+	    		path: 'http://localhost:' + SERVER_PORT,
 	    		app: 'Safari'
 	    	}
 		},
@@ -216,6 +214,10 @@ module.exports = function(grunt) {
 					event: ['added', 'changed']
 				}, 
 				tasks : 'stylus:compilar'
+			}, 
+
+			all: {
+				files: 'public/**/*'
 			}
 		}, 
 
@@ -322,8 +324,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('minify', ['rev:assets','useminPrepare', 'usemin', 'concat', 'uglify', 'cssmin', 'rev:minified', 'usemin', 'imagemin', 'htmlcompressor']);
 	grunt.registerTask('dist', ['clean', 'jshint-all', 'jasmine', 'copy', 'minify', 'clean:buildDevelopment']);
 
-	grunt.registerTask('server', ['express','open:padrao', 'watch']);
-	grunt.registerTask('server-all', ['express','open:chrome','open:firefox', 'open:safari', 'watch']);
+	grunt.registerTask('server', ['connect','open:padrao', 'watch']);
+	grunt.registerTask('server-all', ['connect','open:chrome','open:firefox', 'open:safari', 'watch']);
 
 	grunt.registerTask('jshint-all', function() {
 		lintNotPreprocessedScriptsOnly();
