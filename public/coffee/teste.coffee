@@ -1,4 +1,4 @@
-nome = 20; 
+nome = 30; 
 opposite = true;
 
 number = -42 if opposite

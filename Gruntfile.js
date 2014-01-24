@@ -282,7 +282,7 @@ module.exports = function(grunt) {
 			// não deve fazer liting de CSS e JS criados a partir de less, coffee e sass.
 			if(target === 'js') {
 				// livereload também dispara o watch, por isso o if
-				var coffeeFilepath = filepath.replace('/js/', '/coffee/' ).replace('.js','.coffee');
+				var coffeeFilepath = helper.createPreprocessedFilepathFrom(filepath, 'coffee');
 				// passa arquivo específico
 				if(!grunt.file.exists(coffeeFilepath)){
 					grunt.log.writeln('Liting ' + filepath);
@@ -292,16 +292,15 @@ module.exports = function(grunt) {
 			}
 
 			if(target === 'css') {
-				var preProcessedFiles = [];
+				var preProcessedFiles = [
+					helper.createPreprocessedFilepathFrom(filepath, 'less'), 
+					helper.createPreprocessedFilepathFrom(filepath, 'scss'), 
+					helper.createPreprocessedFilepathFrom(filepath, 'styl')
+				];
 
-				preProcessedFiles.push(filepath.replace('/css/', '/less/' ).replace('.css','.less'));
-				preProcessedFiles.push(filepath.replace('/css/', '/scss/' ).replace('.css','.scss'));
-				preProcessedFiles.push(filepath.replace('/css/', '/styl/' ).replace('.css','.styl'));
-				
 				var lintFile = true;
 
-				preProcessedFiles.forEach(function(preProcessedFile) {
-					
+				preProcessedFiles.forEach(function(preProcessedFile) {	
 					if(grunt.file.exists(preProcessedFile)){
 						lintFile = false;
 						return false;
@@ -332,25 +331,22 @@ module.exports = function(grunt) {
 
 	grunt.task.run('notify_hooks');
 	
-	
-	
-
 	function lintNotPreprocessedScriptsOnly() {
-		var arquivos = grunt.file.expand({filter: 'isFile'}, ['public/js/**']);
+		var files = grunt.file.expand({filter: 'isFile'}, ['public/js/**']);
 
-        arquivos.forEach(function(filepath) {
-        	var coffeeFilepath = filepath.replace('/js/', '/coffee/' ).replace('.js','.coffee');
+        files.forEach(function(filepath) {
+        	var coffeeFilepath = helper.createPreprocessedFilepathFrom(filepath, 'coffee');
 				// passa arquivo específico
-				var arquivosParaLinting = []
+				var filesForLinting = []
 				if(!grunt.file.exists(coffeeFilepath)) {
 					grunt.log.ok(filepath + ' added to lint list');
-					arquivosParaLinting.push(filepath);
+					filesForLinting.push(filepath);
 				} else {
-					grunt.log.writeln('   ' + filepath + ' ignored (Coffe file)');
+					grunt.log.writeln('   ' + filepath + ' ignored (from CoffeScript file)');
 				}
 
-				if(arquivosParaLinting.length) {
-					grunt.config(['jshint', 'file'], arquivosParaLinting);
+				if(filesForLinting.length) {
+					grunt.config(['jshint', 'file'], filesForLinting);
 					grunt.task.run('jshint:file');
 				}
         });

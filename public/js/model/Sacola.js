@@ -1,5 +1,5 @@
 function Sacola() {
-	"use strict";
+	"use strict"; 
 	var total = 0;
 
 	this.obterTotal = function() {
@@ -7,7 +7,7 @@ function Sacola() {
 	};
 
 	this.incrementarTotal = function() {
-		return ++total;
+		return ++total; 
 	};
 }
 
