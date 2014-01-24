@@ -17,7 +17,7 @@ A sample project that use many hot Grunt plugins! The guests are:
 - [grunt-contrib-stylus](https://github.com/gruntjs/grunt-contrib-stylus): live compiling of styl files.
 - [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch): core of livereloading and file change event's.
 - [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify): minify your js's in your distribution folder.
-- [grunt-express](https://github.com/blai/grunt-express):  livereloading and js injection of livereload script in your pages.
+- [grunt-connect](https://github.com/gruntjs/grunt-contrib-connect):  livereloading and js injection of livereload script in your pages.
 - [grunt-htmlcompressor](https://github.com/jney/grunt-htmlcompressor): how about compress your static pages
 - [grunt-notify](https://github.com/dylang/grunt-notify): show grunt notification out-of the console.
 - [grunt-open](https://github.com/jsoverson/grunt-open): automatically open your browser after liveload server started.
