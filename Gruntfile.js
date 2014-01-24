@@ -1,4 +1,6 @@
 module.exports = function(grunt) {
+	
+	var helper = require('./helper/helper.js');
 
 	// não deve carregar templates, por isso o ignore no grunt-template-jasmine-istanbul
 	require('load-grunt-tasks')(
@@ -32,7 +34,6 @@ module.exports = function(grunt) {
     		}
     	},
     	
-
 		rev: {
 		    options: {
 		      encoding: 'utf8',
@@ -264,13 +265,17 @@ module.exports = function(grunt) {
 	});
 
 	grunt.event.on('watch', function(action, filepath, target) {
-		//grunt.log.writeln('Target ' + target + '/' + action);
+		
 		if(action === "deleted") {
 			
-			deletarArquivo(filepath, "coffee", "js");
-			deletarArquivo(filepath, "less", "css");
-			deletarArquivo(filepath, "scss", "css");
-			deletarArquivo(filepath, "styl", "css");
+			if(helper.isPreprocessor(filepath)) {
+				var compiledFilepath = helper.createCompiledFilepathFrom(filepath);
+				grunt.log.writeln(compiledFilepath);
+				if(grunt.file.exists(compiledFilepath)) {
+					grunt.file.delete(compiledFilepath);
+					grunt.log.writeln(compiledFilepath + ' [DELETED] from preprocessor');	
+				}
+			}
 
 		} else {
 			
@@ -327,18 +332,8 @@ module.exports = function(grunt) {
 
 	grunt.task.run('notify_hooks');
 	
-	function deletarArquivo(arquivoDeletado, extensao, extensaoFinal) {
-
-		var pattern = new RegExp(extensao, "gi");
-
-		if(arquivoDeletado.search(pattern) != -1) {
-			
-			var arquivoApagar = arquivoDeletado.replace(pattern, extensaoFinal);
-			grunt.file.delete(arquivoApagar);
-			grunt.log.writeln(arquivoApagar + ' deleted');
-
-		}
-	}
+	
+	
 
 	function lintNotPreprocessedScriptsOnly() {
 		var arquivos = grunt.file.expand({filter: 'isFile'}, ['public/js/**']);
