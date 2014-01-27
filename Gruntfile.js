@@ -220,6 +220,13 @@ module.exports = function(grunt) {
 				files: 'public/**/*'
 			}
 		}, 
+		sprite: {
+			all: {
+				src: 'public/img/sprites/*.png',
+				destImg: 'public/img/sprites.png',
+				destCSS: 'public/css/sprites.css'
+			}
+		},
 
   		jshint: {
     		file: []
@@ -321,6 +328,7 @@ module.exports = function(grunt) {
 		}  	
 	});
 
+	grunt.registerTask('default', ['server']);
 	grunt.registerTask('minify', ['rev:assets','useminPrepare', 'usemin', 'concat', 'uglify', 'cssmin', 'rev:minified', 'usemin', 'imagemin', 'htmlcompressor']);
 	grunt.registerTask('dist', ['clean', 'jshint-all', 'jasmine', 'copy', 'minify', 'clean:buildDevelopment']);
 
