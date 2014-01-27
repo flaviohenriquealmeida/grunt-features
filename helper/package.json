@@ -1,0 +1,20 @@
+{
+  "name": "grunt-workflow",
+  "version": "1.0.0",
+  "description": "Conjunto de boas práticas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Flávio Almeida",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-jasmine": "~0.5.2",
+    "grunt-template-jasmine-istanbul": "~0.2.5",
+    "load-grunt-tasks": "~0.3.0",
+    "jasmine-node": "~1.13.0",
+    "grunt-jasmine-node": "~0.1.0"
+  }
+}

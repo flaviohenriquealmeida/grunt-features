@@ -8,3 +8,6 @@
 /output
 /bin
 .tmp/
+/helper/node_modules
+/helper/_SpecRunner.html
+.grunt/
