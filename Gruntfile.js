@@ -217,7 +217,10 @@ module.exports = function(grunt) {
 			}, 
 
 			all: {
-				files: 'public/**/*'
+				files: 'public/**/*', 
+				options: {
+					livereload: true
+				}
 			}
 		}, 
 		sprite: {
