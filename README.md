@@ -23,6 +23,7 @@ A sample project that use many hot Grunt plugins! The guests are:
 - [grunt-open](https://github.com/jsoverson/grunt-open): automatically open your browser after liveload server started.
 - [grunt-template-jasmine-istanbul](https://github.com/maenu/grunt-template-jasmine-istanbul): test cover report is welcome.
 - [grunt-rev](https://github.com/cbas/grunt-rev): versioning your css, js and image files!
+- [grunt-traceur](https://github.com/aaronfrost/grunt-traceur): compile ES6 to ES5.
 - [grunt-usemin](https://github.com/yeoman/grunt-usemin): the glue to minification, versioning, concatenation and more.
 - [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks): no more bloated Gruntfile.js
 

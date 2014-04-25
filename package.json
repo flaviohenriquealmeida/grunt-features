@@ -32,6 +32,7 @@
     "grunt-spritesmith": "~1.21.2",
     "grunt-template-jasmine-istanbul": "~0.2.5",
     "grunt-rev": "~0.1.0",
+    "grunt-traceur": "0.0.3",
     "grunt-usemin": "~2.0.1",
     "load-grunt-tasks": "~0.3.0"
   }

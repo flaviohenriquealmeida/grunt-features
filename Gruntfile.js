@@ -166,7 +166,26 @@ module.exports = function(grunt) {
 			}
 		},
 
+		traceur: {
+			compilar: {
+				options: {
+					experimental: true,
+					blockBinding: true 
+				},
+				files:  {
+					'public/js/all-es5.js': ['public/es6/*.js']
+				}
+			}
+		},
+
 		watch: {
+			es6: {
+				files: 'public/es6/*.js', 
+				options: {
+					event: ['added', 'changed']
+				}, 
+				tasks : 'traceur:compilar'
+			},
 			coffee: {
 				files: 'public/coffee/**/*.coffee',
 				options: {
