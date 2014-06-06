@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-	var SERVER_PORT = 9000;
+	var SERVER_PORT = 8080;
 
 	var helper = require('./helper/helper.js');
 
@@ -43,15 +43,11 @@ module.exports = function(grunt) {
 		    },
 
 		    assets: {
-		      files: [{
-		      	src: ['dist/img/**/*.{jpg,jpeg,gif,png}']
-		      }]
+		    	src: ['dist/img/**/*.{jpg,jpeg,gif,png}']
 		  	},
 
 		  	 minified: {
-		      files: [{
 		      	src: ['dist/js/**/*min.js', 'dist/css/**/*.min.css']
-		      }]
 		  	}
 		},
 
@@ -351,7 +347,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('default', ['server']);
-	grunt.registerTask('minify', ['rev:assets','useminPrepare', 'usemin', 'concat', 'uglify', 'cssmin', 'rev:minified', 'usemin', 'imagemin', 'htmlcompressor']);
+	grunt.registerTask('minify', ['useminPrepare', 'usemin', 'concat', 'uglify', 'cssmin', 'rev:assets','rev:minified', 'usemin', 'imagemin', 'htmlcompressor']);
 	grunt.registerTask('dist', ['clean', 'jshint-all', 'jasmine', 'copy', 'minify', 'clean:buildDevelopment']);
 
 	grunt.registerTask('server', ['connect','open:padrao', 'watch']);
