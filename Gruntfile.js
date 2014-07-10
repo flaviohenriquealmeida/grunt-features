@@ -86,16 +86,24 @@ module.exports = function(grunt) {
 		    }
 		},
 
-		connect: {
-			server: {
-				options: {
-					port: SERVER_PORT,
-					base: 'public',
-					livereload: true
-				}
+		browserSync: {
+
+			public: {
+
+				bsFiles: {
+
+					src: ['public/**/*']
+				},
+
+ 				options: {
+            		server: {
+                		baseDir: "public"
+            		}, 
+            		watchTask: true			
+				}				
 			}
 		},
-		
+
 		// grunt-open will open your browser at the project's URL
 	    open: {
 	    	padrao: {
@@ -350,8 +358,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('minify', ['useminPrepare', 'usemin', 'concat', 'uglify', 'cssmin', 'rev:assets','rev:minified', 'usemin', 'imagemin', 'htmlcompressor']);
 	grunt.registerTask('dist', ['clean', 'jshint-all', 'jasmine', 'copy', 'minify', 'clean:buildDevelopment']);
 
-	grunt.registerTask('server', ['connect','open:padrao', 'watch']);
-	grunt.registerTask('server-all', ['connect','open:chrome','open:firefox', 'open:safari', 'watch']);
+	grunt.registerTask('server', ['browserSync','open:padrao', 'watch']);
+	grunt.registerTask('server-all', ['browserSync','open:chrome','open:firefox', 'open:safari', 'watch']);
 
 	grunt.registerTask('jshint-all', function() {
 		lintNotPreprocessedScriptsOnly();
