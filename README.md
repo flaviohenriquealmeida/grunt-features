@@ -2,7 +2,7 @@
 
 A sample project that use many hot Grunt plugins! The guests are:
 
-
+- [grunt-browser-sync](https://github.com/shakyshane/grunt-browser-sync):  livereloading and js injection of livereload script in your pages.
 - [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean): easy folder cleanup 
 - [grunt-contrib-coffee](https://github.com/gruntjs/grunt-contrib-coffee): compile you .coffee automatically after save
 - [grunt-contrib-concat](https://github.com/gruntjs/grunt-contrib-concat): used by [grunt-usemin](https://github.com/yeoman/grunt-usemin) to concatenate you css and js files.
@@ -17,7 +17,6 @@ A sample project that use many hot Grunt plugins! The guests are:
 - [grunt-contrib-stylus](https://github.com/gruntjs/grunt-contrib-stylus): live compiling of styl files.
 - [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch): core of livereloading and file change event's.
 - [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify): minify your js's in your distribution folder.
-- [grunt-connect](https://github.com/gruntjs/grunt-contrib-connect):  livereloading and js injection of livereload script in your pages.
 - [grunt-htmlcompressor](https://github.com/jney/grunt-htmlcompressor): how about compress your static pages
 - [grunt-notify](https://github.com/dylang/grunt-notify): show grunt notification out-of the console.
 - [grunt-open](https://github.com/jsoverson/grunt-open): automatically open your browser after liveload server started.
